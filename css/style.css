@@ -1,0 +1,32 @@
+#bodySection {
+    border: 2px solid white;
+    color: white;
+    margin: 5% auto 0 auto;
+    padding: 5%;
+    background-color: grey;
+    min-width: 350px;
+    max-width: 500px;
+}
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+    color: white;
+    background-color: darkgrey;
+}
+hr {
+    width: 95%;
+}
+ol, ul, h2{
+    text-align: left;
+}
+p > * {
+    font-size: 20px;
+}
+ol, ul{
+    list-style: square;
+}
+li {
+    margin: 0px 5%;
+    position: relative;
+    left: 6%;
+}
