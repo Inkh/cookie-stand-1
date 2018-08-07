@@ -56,5 +56,7 @@ td, th{
 }
 
 td:hover{
-    background-color: darkgrey;
+    color: rgb(252, 238, 195);
+    font-weight: bolder;
+    font-style: italic;
 }
