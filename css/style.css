@@ -4,13 +4,21 @@
     margin: 5% auto 0 auto;
     padding: 5%;
     background-color: grey;
-    min-width: 350px;
-    max-width: 500px;
+    min-width: 700px;
+    max-width: 750px;
 }
 
 h1#welcome{
     margin: 3%;
     font-size: 20px;
+}
+
+th.head {
+    border-bottom: 1px solid white;
+}
+
+th.location {
+    border-right: 1px solid white;
 }
 
 body {
@@ -36,4 +44,17 @@ li {
     margin: 0px 5%;
     position: relative;
     left: 6%;
+}
+table {
+    margin: auto auto;
+}
+
+td, th{
+    padding: 2px 3px;
+    margin: auto auto;
+    vertical-align: middle;
+}
+
+td:hover{
+    background-color: darkgrey;
 }
