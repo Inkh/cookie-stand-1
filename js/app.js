@@ -39,7 +39,7 @@ function makeCookieSales(){
   var totalSold = 0;
   var soldArr = [];
 
-  // loops this through 15 hours
+  // loops this through 15 hours and adds to the array of sold
   for (var i = 0; i < 15; i++){
     var amtSold = Math.floor((Math.random()*(this.maxCus - this.minCus) + this.minCus) * this.avg);
     soldArr[i] = amtSold;
@@ -87,6 +87,7 @@ function createHeader(){
     headRow.appendChild(newHeader);
   }
 
+  // creates the total bought header
   var totalHead = createElement('th', 'Total bought:');
   totalHead.classList.add('head');
   headRow.appendChild(totalHead);
@@ -120,6 +121,7 @@ function createFooter(){
   tableRow.appendChild(footer);
   tableFoot.appendChild(tableRow);
 
+  // looping through all the objects to add the totals
   for(var i = 0; i < 16; i++){
     var sum = 0;
     for(var j = 0; j < storeArr.length; j++){
