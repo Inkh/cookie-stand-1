@@ -56,17 +56,13 @@ for(var j = 0; j < storeArr.length; j++){
 
 // function that calculates the cookies sold per hour as well as tracks the total
 function makeSales(){
-  // gets the element by id stores
+  // declares the necessary variables
   var stores = document.getElementById('stores');
-
-  // creates the ul element
   var unorderedList = document.createElement('ul');
-
-  // creates a header for the store locations
   var heading = document.createElement('h2');
+
+  // sets the text and appends it
   heading.textContent = 'Location: ' + this.location
-  
-  // appends the heading
   stores.appendChild(heading);
 
   // declare varible for sum
