@@ -4,8 +4,8 @@
     margin: 5% auto 0 auto;
     padding: 5%;
     background-color: grey;
-    min-width: 350px;
-    max-width: 500px;
+    min-width: 600px;
+    max-width: 700px;
 }
 
 h1#welcome{
@@ -36,4 +36,8 @@ li {
     margin: 0px 5%;
     position: relative;
     left: 6%;
+}
+table {
+    border: 1px solid white;
+    padding: 5px;
 }

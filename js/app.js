@@ -19,24 +19,18 @@ var seaCenLoc = new Store('1st and Pike', 11, 38, 3.7);
 var capLoc = new Store('1st and Pike', 20, 38, 2.3);
 var alkiLoc = new Store('1st and Pike', 2, 16, 46);
 
-// an array that stores the locations
+// an array that store the locations
 var storeArr = [pikeLoc, seaAirLoc, seaCenLoc, capLoc, alkiLoc];
-
-// loops through each store location and creates the display
-for(var j = 0; j < storeArr.length; j++){
-  // sells cookies for each store
-  storeArr[j].sellCookies();
-}
 
 // function that calculates the cookies sold per hour as well as tracks the total
 function makeCookieSales(){
   // declares the necessary variables
-  var stores = document.getElementById('stores');
-  var unorderedList = document.createElement('ul');
+  var tableBody = document.getElementById('tableBody');
+  var tableRow = document.createElement('tr');
 
   // // sets the text and appends it
-  stores.appendChild(createElement('h2', 'Location: ' + this.location));
-  stores.appendChild(unorderedList);
+  tableRow.appendChild(createElement('th', this.location));
+  tableBody.appendChild(tableRow);
 
   // declare varible for totalSold
   var totalSold = 0;
@@ -47,17 +41,48 @@ function makeCookieSales(){
     totalSold += amtSold;
 
     // appends the amount of cookies bought at a specific time into an li
-    unorderedList.appendChild(createDisplay(amtSold, i));
+    tableRow.appendChild(createDisplay(amtSold, i));
   }
 
   //  // creates and appends the total amount of cookies bought.
-  unorderedList.appendChild(createElement('li', `Total cookies bought: ${totalSold}`));
+  tableRow.appendChild(createElement('td', `${totalSold}`));
 }
 
 // function that creates the li element to add
-function createDisplay(amtSold, k){
+function createDisplay(amtSold){
+
+  return createElement('td', `${amtSold}`);
+}
+
+// helper function that creates elements and content
+function createElement(tag, content){
+  var createdElement = document.createElement(tag);
+  createdElement.textContent = content;
+
+  // returns the created element
+  return createdElement;
+}
+
+// creates the table header
+function createHeader(){
+  var header = document.getElementById('tableHead');
+  var headRow = document.createElement('tr');
+  header.appendChild(headRow);
+  headRow.appendChild(createElement('th', 'Location'));
+
+  // loops through each column and then adds the time
+  for(var i = 0; i < 15; i++){
+    var newHeader = document.createElement('th');
+    newHeader.textContent = getTime(i);
+    headRow.appendChild(newHeader);
+  }
+
+  headRow.appendChild(createElement('th', 'Total cookies bought:'));
+}
+
+function getTime(i){
   // initalize variables
-  var time = k + 6;
+  var time = i + 6;
   var amPM = 'AM';
 
   // changes AM to PM
@@ -69,15 +94,14 @@ function createDisplay(amtSold, k){
   if(time > 12){
     time = time % 12;
   }
-
-  return createElement('li', `${time} ${amPM}: ${amtSold}`);
+  return `${time} ${amPM}:`;
 }
 
-// helper function that creates elements and content
-function createElement(tag, content){
-  var createdElement = document.createElement(tag);
-  createdElement.textContent = content;
+// creates the actual header
+createHeader();
 
-  // returns the created element
-  return createdElement;
+// loops through each store location and creates the display
+for(var j = 0; j < storeArr.length; j++){
+  // sells cookies for each store
+  storeArr[j].sellCookies();
 }
