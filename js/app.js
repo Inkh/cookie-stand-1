@@ -29,7 +29,9 @@ function makeCookieSales(){
   var tableRow = document.createElement('tr');
 
   // // sets the text and appends it
-  tableRow.appendChild(createElement('th', this.location));
+  var loc = createElement('th', this.location);
+  loc.classList.add('location');
+  tableRow.appendChild(loc);
   tableBody.appendChild(tableRow);
 
   // declare varible for totalSold
@@ -74,10 +76,13 @@ function createHeader(){
   for(var i = 0; i < 15; i++){
     var newHeader = document.createElement('th');
     newHeader.textContent = getTime(i);
+    newHeader.classList.add('head');
     headRow.appendChild(newHeader);
   }
 
-  headRow.appendChild(createElement('th', 'Total cookies bought:'));
+  var totalHead = createElement('th', 'Total cookies bought:');
+  totalHead.classList.add('head');
+  headRow.appendChild(totalHead);
 }
 
 function getTime(i){
@@ -94,7 +99,7 @@ function getTime(i){
   if(time > 12){
     time = time % 12;
   }
-  return `${time} ${amPM}:`;
+  return `${time}${amPM}`;
 }
 
 // creates the actual header
