@@ -63,6 +63,7 @@ function makeSales(){
 
   // sets the text and appends it
   heading.textContent = 'Location: ' + this.location
+  stores.appendChild(unorderedList);
   stores.appendChild(heading);
 
   // declare varible for sum
@@ -73,7 +74,7 @@ function makeSales(){
     var amtSold = Math.round((Math.random()*(this.maxCus - this.minCus) + this.minCus) * this.avg);
     sum += amtSold;
     
-  // appends the cookies at the time
+  // appends the amount of cookies bought at a specific time into an li
   unorderedList.appendChild(createDisplay(amtSold, i));
   }
 
@@ -81,9 +82,6 @@ function makeSales(){
    var total = document.createElement('li');
    total.textContent = `Total cookies bought: ${sum}`;
    unorderedList.appendChild(total);
- 
-   // appends the unordered list of every item
-   stores.appendChild(unorderedList);
 }
 
 // function that creates the li element to add
