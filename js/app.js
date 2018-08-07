@@ -1,12 +1,13 @@
 'use strict';
 
-// object constructore for the Store object
+// object constructor for the Store object
 function Store(location, minCus, maxCus, avg){
   // sets the object's properties to what the user input
   this.location = location,
   this.minCus = minCus;
   this.maxCus = maxCus;
   this.avg = avg;
+  this.soldArr = [];
 }
 
 // creates the sell cookies method
@@ -36,10 +37,12 @@ function makeCookieSales(){
 
   // declare varible for totalSold
   var totalSold = 0;
+  var soldArr = [];
 
   // loops this through 15 hours
   for (var i = 0; i < 15; i++){
     var amtSold = Math.floor((Math.random()*(this.maxCus - this.minCus) + this.minCus) * this.avg);
+    soldArr[i] = amtSold;
     totalSold += amtSold;
 
     // appends the amount of cookies bought at a specific time into an li
@@ -48,6 +51,10 @@ function makeCookieSales(){
 
   //  // creates and appends the total amount of cookies bought.
   tableRow.appendChild(createElement('td', `${totalSold}`));
+
+  // adds the total as the last item and returns it
+  soldArr[15] = totalSold;
+  this.soldArr = soldArr;
 }
 
 // function that creates the li element to add
@@ -80,7 +87,7 @@ function createHeader(){
     headRow.appendChild(newHeader);
   }
 
-  var totalHead = createElement('th', 'Total cookies bought:');
+  var totalHead = createElement('th', 'Total bought:');
   totalHead.classList.add('head');
   headRow.appendChild(totalHead);
 }
@@ -102,6 +109,27 @@ function getTime(i){
   return `${time}${amPM}`;
 }
 
+// footer function that creates the totals
+function createFooter(){
+  var tableFoot = document.getElementById('tableFoot');
+  var tableRow = document.createElement('tr');
+
+  // // sets the text and appends it
+  var footer = createElement('th', 'Totals');
+  footer.classList.add('location');
+  tableRow.appendChild(footer);
+  tableFoot.appendChild(tableRow);
+
+  for(var i = 0; i < 16; i++){
+    var sum = 0;
+    for(var j = 0; j < storeArr.length; j++){
+      sum += storeArr[j].soldArr[i];
+    }
+    tableRow.appendChild(createElement('td', sum));
+  }
+
+}
+
 // creates the actual header
 createHeader();
 
@@ -110,3 +138,6 @@ for(var j = 0; j < storeArr.length; j++){
   // sells cookies for each store
   storeArr[j].sellCookies();
 }
+
+// creates the footer
+createFooter();
