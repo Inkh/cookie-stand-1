@@ -7,6 +7,12 @@
     min-width: 350px;
     max-width: 500px;
 }
+
+h1#welcome{
+    margin: 3%;
+    font-size: 20px;
+}
+
 body {
     font-family: Georgia, 'Times New Roman', Times, serif;
     text-align: center;
@@ -18,12 +24,13 @@ hr {
 }
 ol, ul, h2{
     text-align: left;
+    margin: 0px 10%;
 }
 p > * {
     font-size: 20px;
 }
 ol, ul{
-    list-style: square;
+    margin: 3% 0px;
 }
 li {
     margin: 0px 5%;
