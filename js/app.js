@@ -1,49 +1,23 @@
 'use strict';
 
-// the pike location object
-var pikeLoc = {
-  location: '1st and Pike',
-  minCus: 23,
-  maxCus: 65,
-  avg: 6.3,
-  sellCookies: makeSales
+// object constructore for the Store object
+function Store(location, minCus, maxCus, avg){
+  // sets the object's properties to what the user input
+  this.location = location,
+  this.minCus = minCus;
+  this.maxCus = maxCus;
+  this.avg = avg;
 }
 
-// the seattle airport location object
-var seaAirLoc = {
-  location: 'SeaTac Airport',
-  minCus: 3,
-  maxCus: 24,
-  avg: 1.2,
-  sellCookies: makeSales
-}
+// creates the sell cookies method
+Store.prototype.sellCookies = makeCookieSales;
 
-// the seattle center location object
-var seaCenLoc = {
-  location: 'Seattle Center',
-  minCus: 11,
-  maxCus: 38,
-  avg: 3.7,
-  sellCookies: makeSales
-}
-
-// the capital hill location object
-var capLoc = {
-  location: 'Capitol Hill',
-  minCus: 20,
-  maxCus: 38,
-  avg: 2.3,
-  sellCookies: makeSales
-}
-
-// the alki location object
-var alkiLoc = {
-  location: 'Alki',
-  minCus: 2,
-  maxCus: 16,
-  avg: 4.6,
-  sellCookies: makeSales
-}
+// creating each store for the different locations
+var pikeLoc = new Store('1st and Pike', 23, 65, 6.3);
+var seaAirLoc = new Store('SeaTac Airport', 3, 24, 1.2);
+var seaCenLoc = new Store('1st and Pike', 11, 38, 3.7);
+var capLoc = new Store('1st and Pike', 20, 38, 2.3);
+var alkiLoc = new Store('1st and Pike', 2, 16, 46);
 
 // an array that stores the locations
 var storeArr = [pikeLoc, seaAirLoc, seaCenLoc, capLoc, alkiLoc];
@@ -55,7 +29,7 @@ for(var j = 0; j < storeArr.length; j++){
 }
 
 // function that calculates the cookies sold per hour as well as tracks the total
-function makeSales(){
+function makeCookieSales(){
   // declares the necessary variables
   var stores = document.getElementById('stores');
   var unorderedList = document.createElement('ul');
@@ -64,20 +38,20 @@ function makeSales(){
   stores.appendChild(createElement('h2', 'Location: ' + this.location));
   stores.appendChild(unorderedList);
 
-  // declare varible for sum
-  var sum = 0;
+  // declare varible for totalSold
+  var totalSold = 0;
 
   // loops this through 15 hours
   for (var i = 0; i < 15; i++){
     var amtSold = Math.floor((Math.random()*(this.maxCus - this.minCus) + this.minCus) * this.avg);
-    sum += amtSold;
-    
-  // appends the amount of cookies bought at a specific time into an li
-  unorderedList.appendChild(createDisplay(amtSold, i));
+    totalSold += amtSold;
+
+    // appends the amount of cookies bought at a specific time into an li
+    unorderedList.appendChild(createDisplay(amtSold, i));
   }
 
   //  // creates and appends the total amount of cookies bought.
-   unorderedList.appendChild(createElement('li', `Total cookies bought: ${sum}`));
+  unorderedList.appendChild(createElement('li', `Total cookies bought: ${totalSold}`));
 }
 
 // function that creates the li element to add
