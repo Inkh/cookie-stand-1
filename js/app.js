@@ -16,9 +16,9 @@ Store.prototype.sellCookies = makeCookieSales;
 // creating each store for the different locations
 var pikeLoc = new Store('1st and Pike', 23, 65, 6.3);
 var seaAirLoc = new Store('SeaTac Airport', 3, 24, 1.2);
-var seaCenLoc = new Store('1st and Pike', 11, 38, 3.7);
-var capLoc = new Store('1st and Pike', 20, 38, 2.3);
-var alkiLoc = new Store('1st and Pike', 2, 16, 46);
+var seaCenLoc = new Store('Seattle Center', 11, 38, 3.7);
+var capLoc = new Store('Capitol Hill', 20, 38, 2.3);
+var alkiLoc = new Store('Alki', 2, 16, 46);
 
 // an array that store the locations
 var storeArr = [pikeLoc, seaAirLoc, seaCenLoc, capLoc, alkiLoc];
