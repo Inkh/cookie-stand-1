@@ -51,7 +51,7 @@ var storeArr = [pikeLoc, seaAirLoc, seaCenLoc, capLoc, alkiLoc];
 // loops through each store location and creates the display
 for(var j = 0; j < storeArr.length; j++){
   // sells cookies for each store
-  var cookiesSold = storeArr[j].sellCookies();
+  storeArr[j].sellCookies();
 }
 
 // function that calculates the cookies sold per hour as well as tracks the total
