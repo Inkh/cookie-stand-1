@@ -59,29 +59,25 @@ function makeSales(){
   // declares the necessary variables
   var stores = document.getElementById('stores');
   var unorderedList = document.createElement('ul');
-  var heading = document.createElement('h2');
 
-  // sets the text and appends it
-  heading.textContent = 'Location: ' + this.location
+  // // sets the text and appends it
+  stores.appendChild(createElement('h2', 'Location: ' + this.location));
   stores.appendChild(unorderedList);
-  stores.appendChild(heading);
 
   // declare varible for sum
   var sum = 0;
 
   // loops this through 15 hours
   for (var i = 0; i < 15; i++){
-    var amtSold = Math.round((Math.random()*(this.maxCus - this.minCus) + this.minCus) * this.avg);
+    var amtSold = Math.floor((Math.random()*(this.maxCus - this.minCus) + this.minCus) * this.avg);
     sum += amtSold;
     
   // appends the amount of cookies bought at a specific time into an li
   unorderedList.appendChild(createDisplay(amtSold, i));
   }
 
-   // creates and appends the total amount of cookies bought.
-   var total = document.createElement('li');
-   total.textContent = `Total cookies bought: ${sum}`;
-   unorderedList.appendChild(total);
+  //  // creates and appends the total amount of cookies bought.
+   unorderedList.appendChild(createElement('li', `Total cookies bought: ${sum}`));
 }
 
 // function that creates the li element to add
@@ -100,10 +96,14 @@ function createDisplay(amtSold, k){
     time = time % 12;
   }
 
-  // creates the li elements containing the time and cookies sold
-  var cookSoldLI = document.createElement('li');
-  cookSoldLI.textContent = `${time} ${amPM}: ${amtSold}`;
+  return createElement('li', `${time} ${amPM}: ${amtSold}`);
+}
 
-  // returns the element created
-  return cookSoldLI;
+// helper function that creates elements and content
+function createElement(tag, content){
+  var createdElement = document.createElement(tag);
+  createdElement.textContent = content;
+
+  // returns the created element
+  return createdElement;
 }
