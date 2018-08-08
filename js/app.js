@@ -13,14 +13,7 @@ function Store(location, minCust, maxCust, avg){
 // creates the sell cookies method
 Store.prototype.sellCookies = makeCookieSales;
 
-// // creating each store for the different locations
-// var pikeLoc = new Store('1st and Pike', 23, 65, 6.3);
-// var seaAirLoc = new Store('SeaTac Airport', 3, 24, 1.2);
-// var seaCenLoc = new Store('Seattle Center', 11, 38, 3.7);
-// var capLoc = new Store('Capitol Hill', 20, 38, 2.3);
-// var alkiLoc = new Store('Alki', 2, 16, 46);
-
-// // an array that store the locations
+// an array that store the locations
 var storeArr = [];
 
 // creating each store for the different locations
@@ -40,7 +33,7 @@ function makeCookieSales(){
   var tableBody = getEl('tableBody');
   var tableRow = document.createElement('tr');
 
-  // // sets the text and appends it
+  // sets the text and appends it
   var loc = createElement('th', this.location);
   loc.classList.add('location');
   tableRow.appendChild(loc);
@@ -60,7 +53,7 @@ function makeCookieSales(){
     tableRow.appendChild(createDisplay(amtSold, i));
   }
 
-  //  // creates and appends the total amount of cookies bought.
+  // creates and appends the total amount of cookies bought.
   tableRow.appendChild(createElement('td', `${totalSold}`));
 
   // adds the total as the last item and returns it
@@ -135,7 +128,7 @@ function createFooter(){
   var tableFoot = getEl('tableFoot');
   var tableRow = document.createElement('tr');
 
-  // // sets the text and appends it
+  // sets the text and appends it
   var footer = createElement('th', 'Totals');
   footer.classList.add('location');
   tableRow.appendChild(footer);
@@ -177,8 +170,6 @@ for(var j = 0; j < storeArr.length; j++){
   storeArr[j].sellCookies();
 }
 
-// creates the footer
-//createFooter();
-
+// adds an event listener to the form
 var formEl = getEl('addForm');
 formEl.addEventListener('submit', addStore);
