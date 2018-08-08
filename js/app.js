@@ -154,11 +154,24 @@ function clearFooter(){
   }
 }
 
+// function to clear all the fields
+function clearFields(e){
+  e.target.loc.value = '';
+  e.target.minCust.value = 0;
+  e.target.maxCust.value = 0;
+  e.target.maxCust.value = 0;
+}
+
 // adds a new store from the user's input
 function addStore(e){
   e.preventDefault();
   createStore(e.target.loc.value, Number(e.target.minCust.value), Number(e.target.maxCust.value), Number(e.target.avg.value));
+
+  // runs the sell cookies to generate and display data
   storeArr[storeArr.length-1].sellCookies();
+
+  // clear the fields
+  clearFields(e);
 }
 
 // creates the actual header
