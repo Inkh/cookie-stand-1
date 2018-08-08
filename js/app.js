@@ -13,20 +13,31 @@ function Store(location, minCus, maxCus, avg){
 // creates the sell cookies method
 Store.prototype.sellCookies = makeCookieSales;
 
-// creating each store for the different locations
-var pikeLoc = new Store('1st and Pike', 23, 65, 6.3);
-var seaAirLoc = new Store('SeaTac Airport', 3, 24, 1.2);
-var seaCenLoc = new Store('Seattle Center', 11, 38, 3.7);
-var capLoc = new Store('Capitol Hill', 20, 38, 2.3);
-var alkiLoc = new Store('Alki', 2, 16, 46);
+// // creating each store for the different locations
+// var pikeLoc = new Store('1st and Pike', 23, 65, 6.3);
+// var seaAirLoc = new Store('SeaTac Airport', 3, 24, 1.2);
+// var seaCenLoc = new Store('Seattle Center', 11, 38, 3.7);
+// var capLoc = new Store('Capitol Hill', 20, 38, 2.3);
+// var alkiLoc = new Store('Alki', 2, 16, 46);
 
-// an array that store the locations
-var storeArr = [pikeLoc, seaAirLoc, seaCenLoc, capLoc, alkiLoc];
+// // an array that store the locations
+var storeArr = [];
+
+// creating each store for the different locations
+createStore('1st and Pike', 23, 65, 6.3);
+createStore('SeaTac Airport', 3, 24, 1.2);
+createStore('Seattle Center', 11, 38, 3.7);
+createStore('Capitol Hill', 20, 38, 2.3);
+createStore('Alki', 2, 16, 46);
+
+function createStore(loc, minCust, maxCust, avg){
+  storeArr.push(new Store(loc, minCust, maxCust, avg));
+}
 
 // function that calculates the cookies sold per hour as well as tracks the total
 function makeCookieSales(){
   // declares the necessary variables
-  var tableBody = document.getElementById('tableBody');
+  var tableBody = getEl('tableBody');
   var tableRow = document.createElement('tr');
 
   // // sets the text and appends it
@@ -59,7 +70,6 @@ function makeCookieSales(){
 
 // function that creates the li element to add
 function createDisplay(amtSold){
-
   return createElement('td', `${amtSold}`);
 }
 
@@ -74,7 +84,7 @@ function createElement(tag, content){
 
 // creates the table header
 function createHeader(){
-  var header = document.getElementById('tableHead');
+  var header = getEl('tableHead');
   var headRow = document.createElement('tr');
   header.appendChild(headRow);
   headRow.appendChild(createElement('th', 'Location'));
@@ -93,6 +103,7 @@ function createHeader(){
   headRow.appendChild(totalHead);
 }
 
+// function that determines the time
 function getTime(i){
   // initalize variables
   var time = i + 6;
@@ -110,9 +121,14 @@ function getTime(i){
   return `${time}${amPM}`;
 }
 
+// function that gets the element ID, tired of typing the whole thing in haha
+function getEl(id){
+  return document.getElementById(id);
+}
+
 // footer function that creates the totals
 function createFooter(){
-  var tableFoot = document.getElementById('tableFoot');
+  var tableFoot = getEl('tableFoot');
   var tableRow = document.createElement('tr');
 
   // // sets the text and appends it
@@ -129,7 +145,11 @@ function createFooter(){
     }
     tableRow.appendChild(createElement('td', sum));
   }
+}
 
+// adds a new store from the user's input
+function addStore(e){
+  e.preventDefault;
 }
 
 // creates the actual header
@@ -143,3 +163,6 @@ for(var j = 0; j < storeArr.length; j++){
 
 // creates the footer
 createFooter();
+
+var formEl = getEl('addForm');
+formEl.addEventListener('submit', addStore);

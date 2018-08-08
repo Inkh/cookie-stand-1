@@ -13,6 +13,11 @@ h1#welcome{
     font-size: 20px;
 }
 
+.inputs{
+    float: left;
+    width: 150px;
+}
+
 th.head {
     border-bottom: 1px solid white;
 }
@@ -27,6 +32,7 @@ body {
     color: white;
     background-color: darkgrey;
 }
+
 hr {
     width: 95%;
 }
