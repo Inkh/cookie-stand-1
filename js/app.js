@@ -66,6 +66,9 @@ function makeCookieSales(){
   // adds the total as the last item and returns it
   soldArr[15] = totalSold;
   this.soldArr = soldArr;
+
+  // creates the footer at the end
+  createFooter();
 }
 
 // function that creates the li element to add
@@ -128,6 +131,7 @@ function getEl(id){
 
 // footer function that creates the totals
 function createFooter(){
+  clearFooter();
   var tableFoot = getEl('tableFoot');
   var tableRow = document.createElement('tr');
 
@@ -147,10 +151,21 @@ function createFooter(){
   }
 }
 
+// clears the footer so we can update
+function clearFooter(){
+  var tableFoot = getEl('tableFoot');
+
+  // while there is a child, removes the child
+  while(tableFoot.firstChild){
+    tableFoot.removeChild(tableFoot.firstChild);
+  }
+}
+
 // adds a new store from the user's input
 function addStore(e){
   e.preventDefault();
-  createStore(getEl('loc'), getEl('minCust'), getEl('maxCust'), getEl('avg'));
+  createStore(e.target.loc.value, Number(e.target.minCust.value), Number(e.target.maxCust.value), Number(e.target.avg.value));
+  storeArr[storeArr.length-1].sellCookies();
 }
 
 // creates the actual header
@@ -163,7 +178,7 @@ for(var j = 0; j < storeArr.length; j++){
 }
 
 // creates the footer
-createFooter();
+//createFooter();
 
 var formEl = getEl('addForm');
 formEl.addEventListener('submit', addStore);
