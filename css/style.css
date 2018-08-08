@@ -14,8 +14,13 @@ h1#welcome{
 }
 
 .inputs{
-    float: left;
+    float:left;
     width: 150px;
+}
+
+.but {
+    height: 50px;
+    display: inline-block;
 }
 
 th.head {
@@ -65,4 +70,12 @@ td:hover{
     color: rgb(252, 238, 195);
     font-weight: bolder;
     font-style: italic;
+}
+
+#submitButton {
+    margin: 10px 10px;
+}
+
+fieldset{
+    text-align: center;
 }
