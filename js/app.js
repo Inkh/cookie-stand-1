@@ -1,11 +1,11 @@
 'use strict';
 
 // object constructor for the Store object
-function Store(location, minCus, maxCus, avg){
+function Store(location, minCust, maxCust, avg){
   // sets the object's properties to what the user input
   this.location = location,
-  this.minCus = minCus;
-  this.maxCus = maxCus;
+  this.minCust = minCust;
+  this.maxCust = maxCust;
   this.avg = avg;
   this.soldArr = [];
 }
@@ -52,7 +52,7 @@ function makeCookieSales(){
 
   // loops this through 15 hours and adds to the array of sold
   for (var i = 0; i < 15; i++){
-    var amtSold = Math.floor((Math.random()*(this.maxCus - this.minCus) + this.minCus) * this.avg);
+    var amtSold = Math.floor((Math.random()*(this.maxCust - this.minCust) + this.minCust) * this.avg);
     soldArr[i] = amtSold;
     totalSold += amtSold;
 
@@ -149,7 +149,8 @@ function createFooter(){
 
 // adds a new store from the user's input
 function addStore(e){
-  e.preventDefault;
+  e.preventDefault();
+  createStore(getEl('loc'), getEl('minCust'), getEl('maxCust'), getEl('avg'));
 }
 
 // creates the actual header
