@@ -1,11 +1,11 @@
 'use strict';
 
 // object constructor for the Store object
-function Store(location, minCus, maxCus, avg){
+function Store(location, minCust, maxCust, avg){
   // sets the object's properties to what the user input
   this.location = location,
-  this.minCus = minCus;
-  this.maxCus = maxCus;
+  this.minCust = minCust;
+  this.maxCust = maxCust;
   this.avg = avg;
   this.soldArr = [];
 }
@@ -13,23 +13,27 @@ function Store(location, minCus, maxCus, avg){
 // creates the sell cookies method
 Store.prototype.sellCookies = makeCookieSales;
 
-// creating each store for the different locations
-var pikeLoc = new Store('1st and Pike', 23, 65, 6.3);
-var seaAirLoc = new Store('SeaTac Airport', 3, 24, 1.2);
-var seaCenLoc = new Store('Seattle Center', 11, 38, 3.7);
-var capLoc = new Store('Capitol Hill', 20, 38, 2.3);
-var alkiLoc = new Store('Alki', 2, 16, 46);
-
 // an array that store the locations
-var storeArr = [pikeLoc, seaAirLoc, seaCenLoc, capLoc, alkiLoc];
+var storeArr = [];
+
+// creating each store for the different locations
+createStore('1st and Pike', 23, 65, 6.3);
+createStore('SeaTac Airport', 3, 24, 1.2);
+createStore('Seattle Center', 11, 38, 3.7);
+createStore('Capitol Hill', 20, 38, 2.3);
+createStore('Alki', 2, 16, 46);
+
+function createStore(loc, minCust, maxCust, avg){
+  storeArr.push(new Store(loc, minCust, maxCust, avg));
+}
 
 // function that calculates the cookies sold per hour as well as tracks the total
 function makeCookieSales(){
   // declares the necessary variables
-  var tableBody = document.getElementById('tableBody');
+  var tableBody = getEl('tableBody');
   var tableRow = document.createElement('tr');
 
-  // // sets the text and appends it
+  // sets the text and appends it
   var loc = createElement('th', this.location);
   loc.classList.add('location');
   tableRow.appendChild(loc);
@@ -41,7 +45,7 @@ function makeCookieSales(){
 
   // loops this through 15 hours and adds to the array of sold
   for (var i = 0; i < 15; i++){
-    var amtSold = Math.floor((Math.random()*(this.maxCus - this.minCus) + this.minCus) * this.avg);
+    var amtSold = Math.floor((Math.random()*(this.maxCust - this.minCust) + this.minCust) * this.avg);
     soldArr[i] = amtSold;
     totalSold += amtSold;
 
@@ -49,17 +53,19 @@ function makeCookieSales(){
     tableRow.appendChild(createDisplay(amtSold, i));
   }
 
-  //  // creates and appends the total amount of cookies bought.
+  // creates and appends the total amount of cookies bought.
   tableRow.appendChild(createElement('td', `${totalSold}`));
 
   // adds the total as the last item and returns it
   soldArr[15] = totalSold;
   this.soldArr = soldArr;
+
+  // creates the footer at the end
+  createFooter();
 }
 
 // function that creates the li element to add
 function createDisplay(amtSold){
-
   return createElement('td', `${amtSold}`);
 }
 
@@ -74,7 +80,7 @@ function createElement(tag, content){
 
 // creates the table header
 function createHeader(){
-  var header = document.getElementById('tableHead');
+  var header = getEl('tableHead');
   var headRow = document.createElement('tr');
   header.appendChild(headRow);
   headRow.appendChild(createElement('th', 'Location'));
@@ -93,6 +99,7 @@ function createHeader(){
   headRow.appendChild(totalHead);
 }
 
+// function that determines the time
 function getTime(i){
   // initalize variables
   var time = i + 6;
@@ -110,12 +117,18 @@ function getTime(i){
   return `${time}${amPM}`;
 }
 
+// function that gets the element ID, tired of typing the whole thing in haha
+function getEl(id){
+  return document.getElementById(id);
+}
+
 // footer function that creates the totals
 function createFooter(){
-  var tableFoot = document.getElementById('tableFoot');
+  clearFooter();
+  var tableFoot = getEl('tableFoot');
   var tableRow = document.createElement('tr');
 
-  // // sets the text and appends it
+  // sets the text and appends it
   var footer = createElement('th', 'Totals');
   footer.classList.add('location');
   tableRow.appendChild(footer);
@@ -129,7 +142,36 @@ function createFooter(){
     }
     tableRow.appendChild(createElement('td', sum));
   }
+}
 
+// clears the footer so we can update
+function clearFooter(){
+  var tableFoot = getEl('tableFoot');
+
+  // while there is a child, removes the child
+  while(tableFoot.firstChild){
+    tableFoot.removeChild(tableFoot.firstChild);
+  }
+}
+
+// function to clear all the fields
+function clearFields(e){
+  e.target.loc.value = '';
+  e.target.minCust.value = 0;
+  e.target.maxCust.value = 0;
+  e.target.avg.value = 0;
+}
+
+// adds a new store from the user's input
+function addStore(e){
+  e.preventDefault();
+  createStore(e.target.loc.value, Number(e.target.minCust.value), Number(e.target.maxCust.value), Number(e.target.avg.value));
+
+  // runs the sell cookies to generate and display data
+  storeArr[storeArr.length-1].sellCookies();
+
+  // clear the fields
+  clearFields(e);
 }
 
 // creates the actual header
@@ -141,5 +183,6 @@ for(var j = 0; j < storeArr.length; j++){
   storeArr[j].sellCookies();
 }
 
-// creates the footer
-createFooter();
+// adds an event listener to the form
+var formEl = getEl('addForm');
+formEl.addEventListener('submit', addStore);

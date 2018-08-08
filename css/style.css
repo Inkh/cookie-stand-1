@@ -1,7 +1,7 @@
 #bodySection {
     border: 2px solid white;
     color: white;
-    margin: 5% auto 0 auto;
+    margin: 2% auto 0 auto;
     padding: 5%;
     background-color: grey;
     min-width: 700px;
@@ -11,6 +11,10 @@
 h1#welcome{
     margin: 3%;
     font-size: 20px;
+}
+
+.but {
+    height: 50px;
 }
 
 th.head {
@@ -27,6 +31,7 @@ body {
     color: white;
     background-color: darkgrey;
 }
+
 hr {
     width: 95%;
 }
@@ -56,5 +61,27 @@ td, th{
 }
 
 td:hover{
-    background-color: darkgrey;
+    color: rgb(252, 238, 195);
+    font-weight: bolder;
+    font-style: italic;
+}
+
+#submitButton {
+    margin: 10px 10px;
+}
+
+#input {
+    float: left;
+    width: 150px;
+    margin: 10px auto;
+}
+
+fieldset{
+    border-top: 1px dashed white;
+}
+
+img {
+    margin-top: 2%;
+    width: 50%;
+    height: 50%;
 }

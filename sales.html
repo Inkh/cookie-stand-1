@@ -10,12 +10,33 @@
 </head>
 <body>
   <div id="bodySection">
-    <h1 id="welcome">Total Sales Per Location</h1>
+    <section>
+      <h1 id="welcome">Total Sales Per Location</h1>
       <table id="display">
         <thead id="tableHead"></thead>
         <tbody id="tableBody"></tbody>
         <tfoot id="tableFoot"></tfoot>
       </table>
+    </section>
+    <br />
+    <section>
+      <form id="addForm">
+        <fieldset>
+          <div id="input">
+          <label class="inputs" for="loc">Store Location:</label>
+          <input type="text" name="loc" placeholder="Insert location"/>
+          <label class="inputs" for="minCust">Min Cust:</label>
+          <input type="number" name="minCust"/>
+          <label class="inputs" for="maxCust">Max Cust:</label>
+          <input type="number" name="maxCust"/>
+          <label class="inputs" for="avg">Avg Cust:</label>
+          <input type="number" step=".01" name="avg"/>
+          <input type="submit" id="submitButton" value="Add Store">
+        </div>
+        <img src="img/salmon.png" />
+        </fieldset>
+      </form>
+    </section>
   </div>
   <script src="js/app.js"></script>
 </body>
