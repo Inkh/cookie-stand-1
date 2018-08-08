@@ -22,14 +22,19 @@
     <section>
       <form id="addForm">
         <fieldset>
-            <label class="inputs">Store Location:<input type="text" name="loc" placeholder="Insert location"/></label>
-            <label class="inputs">Min Cust:<input type="number" name="minCust"/></label>
-            <label class="inputs">Max Cust:<input type="number" name="maxCust"/></label>
-            <label class="inputs">Avg Cust:<input type="number" step=".01" name="avg"/></label>
+          <div id="input">
+          <label class="inputs" for="loc">Store Location:</label>
+          <input type="text" name="loc" placeholder="Insert location"/>
+          <label class="inputs" for="minCust">Min Cust:</label>
+          <input type="number" name="minCust"/>
+          <label class="inputs" for="maxCust">Max Cust:</label>
+          <input type="number" name="maxCust"/>
+          <label class="inputs" for="avg">Avg Cust:</label>
+          <input type="number" step=".01" name="avg"/>
+          <input type="submit" id="submitButton" value="Add Store">
+        </div>
+        <img src="img/salmon.png" />
         </fieldset>
-            <div id="but">
-                <input type="submit" id="submitButton">
-            </div>
       </form>
     </section>
   </div>

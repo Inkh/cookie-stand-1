@@ -159,7 +159,7 @@ function clearFields(e){
   e.target.loc.value = '';
   e.target.minCust.value = 0;
   e.target.maxCust.value = 0;
-  e.target.maxCust.value = 0;
+  e.target.avg.value = 0;
 }
 
 // adds a new store from the user's input

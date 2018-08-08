@@ -1,7 +1,7 @@
 #bodySection {
     border: 2px solid white;
     color: white;
-    margin: 5% auto 0 auto;
+    margin: 2% auto 0 auto;
     padding: 5%;
     background-color: grey;
     min-width: 700px;
@@ -13,14 +13,8 @@ h1#welcome{
     font-size: 20px;
 }
 
-.inputs{
-    float:left;
-    width: 150px;
-}
-
 .but {
     height: 50px;
-    display: inline-block;
 }
 
 th.head {
@@ -76,6 +70,18 @@ td:hover{
     margin: 10px 10px;
 }
 
+#input {
+    float: left;
+    width: 150px;
+    margin: 10px auto;
+}
+
 fieldset{
-    text-align: center;
+    border-top: 1px dashed white;
+}
+
+img {
+    margin-top: 2%;
+    width: 50%;
+    height: 50%;
 }
