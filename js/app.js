@@ -21,7 +21,7 @@ createStore('1st and Pike', 23, 65, 6.3);
 createStore('SeaTac Airport', 3, 24, 1.2);
 createStore('Seattle Center', 11, 38, 3.7);
 createStore('Capitol Hill', 20, 38, 2.3);
-createStore('Alki', 2, 16, 46);
+createStore('Alki', 2, 16, 4.6);
 
 function createStore(loc, minCust, maxCust, avg){
   storeArr.push(new Store(loc, minCust, maxCust, avg));
