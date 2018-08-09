@@ -1,0 +1,96 @@
+body {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  text-align: center;
+  color: white;
+  background-color: darkgrey;
+}
+
+p > * {
+  font-size: 20px;
+}
+
+ol, ul{
+  margin: 3% 0px;
+}
+
+li {
+  margin: 0px 5%;
+  position: relative;
+}
+
+table {
+  margin: auto auto;
+}
+
+td, th{
+  padding: 2px 3px;
+  margin: auto auto;
+  vertical-align: middle;
+}
+
+td:hover{
+  color: rgb(252, 238, 195);
+  font-weight: bolder;
+  font-style: italic;
+}
+
+header{
+  text-align: center;
+  font-family: 'Stalinist One', cursive;
+  position: absolute;
+  top: 1%;
+  width: 100%;
+  min-width: 850px;
+}
+
+main {
+  position: absolute;
+  top: 22%;
+  width: 100%;
+  min-width: 850px;
+}
+
+h1 {
+  font-size: 50px
+}
+
+nav {
+  margin: 0 auto;
+  font-size: 15px;
+}
+
+ol{
+  margin: 0px;
+}
+
+li{
+  display: inline-block;
+  margin: 5px;
+}
+
+hr {
+  width: 95%;
+}
+
+li:hover{
+  color: goldenrod;
+}
+
+footer{
+  position: absolute;
+  bottom: 1%;
+  right: auto;
+  left: auto;
+  width: 100%;
+  min-width: 850px;
+}
+
+#salesImg {
+  height: 10px;
+  width: 20px;
+}
+
+#shirtImg{
+  height: 16px;
+  width: 16px;
+}

@@ -36,14 +36,14 @@ hr {
     width: 95%;
 }
 ol, ul, h2{
-    text-align: left;
-    margin: 0px 10%;
+    /* text-align: left; */
+    /* margin: 0px 10%; */
 }
 p > * {
     font-size: 20px;
 }
 ol, ul{
-    margin: 3% 0px;
+    /* margin: 3% 0px; */
 }
 li {
     margin: 0px 5%;
