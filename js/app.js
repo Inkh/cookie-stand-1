@@ -45,7 +45,7 @@ function makeCookieSales(){
 
   // loops this through 15 hours and adds to the array of sold
   for (var i = 0; i < 15; i++){
-    var amtSold = Math.floor((Math.random()*(this.maxCust - this.minCust) + this.minCust) * this.avg);
+    var amtSold = Math.floor((Math.random()*(this.maxCust - this.minCust + 1) + this.minCust) * this.avg);
     soldArr[i] = amtSold;
     totalSold += amtSold;
 
